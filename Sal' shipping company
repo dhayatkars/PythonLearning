@@ -1,0 +1,51 @@
+#Sal' shipping company - cheapest shipping method
+
+#ground shipping cost
+def ground_shipping(weight):
+  flat_rate=20
+  if weight <= 2:
+    cost = 1.5*weight
+  elif weight > 2 and weight <= 6:
+    cost = 3.0*weight
+  elif weight > 6 and weight <= 10:
+    cost = 4.0*weight
+  elif weight > 10:
+    cost = 4.75*weight
+  return cost+flat_rate
+
+gs_cost = ground_shipping(8.4)
+print(gs_cost)
+
+#Premium shipping cost
+premium_shipping = 125
+
+#drone_shipping
+def drone_shipping(weight):
+  if weight <= 2:
+    cost = 4.5*weight
+  elif weight > 2 and weight <= 6:
+    cost = 9.0*weight
+  elif weight > 6 and weight <= 10:
+    cost = 12.0*weight
+  elif weight > 10:
+    cost = 14.25*weight
+  return cost
+
+drone_cost = drone_shipping(1.5)
+print(drone_cost)
+
+#function to compare shipping cost
+
+def compare_shipping(weight):
+  gs=ground_shipping(weight)
+  ds=drone_shipping(weight)
+  if gs < ds and gs<premium_shipping:
+    print("The cheapest method is ground shipping and will cost you "+str(gs)+ " dollars")
+  elif ds < gs and ds < premium_shipping:
+    print("The cheapest method is drone shipping and will cost you "+str(ds)+ " dollars")
+  elif premium_shipping < gs and premium_shipping < ds:
+      print("The cheapest method is premium shipping and will cost you "+str(premium_shipping)+ " dollars")
+
+compare_shipping(4.8)
+compare_shipping(41.5)
+
